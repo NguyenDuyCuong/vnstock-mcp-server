@@ -626,7 +626,7 @@ def get_quote_history_price(symbol: str, start_date: str, end_date: str = None, 
         pd.DataFrame
     """
     quote = Quote(symbol=symbol, source='VCI')
-    df = quote.history(start_date=start_date, end_date=end_date or datetime.now().strftime('%Y-%m-%d'), interval=interval)
+    df = quote.history(start=start_date, end=end_date or datetime.now().strftime('%Y-%m-%d'), interval=interval)
     if output_format == 'json':
         return df.to_json(orient='records', force_ascii=False)
     else:
